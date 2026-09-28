@@ -16,15 +16,21 @@ whole fleet is monitored from a single teleoperation dashboard.
 ## Tech stack
 Python 3 · ROS 2 · RViz · OpenCV · NumPy · tf2 · cv_bridge
 
-## Run
+## Setup
+- ROS 2 (Ubuntu) with `rclpy`, `tf2_ros`, `cv_bridge`
+- Python packages: `opencv-python`, `numpy`
+
+The main node is `mining_vehicle/rviz_markers.py` (class `BailadilaProductionEngine`).
+To run it, place it inside a ROS 2 Python package named `mining_vehicle`, register it as an
+entry point in `setup.py`, then build and run:
 ```bash
-cd ~/sih_ws
 colcon build --packages-select mining_vehicle
 source install/setup.bash
-ros2 launch mining_vehicle simulation.launch.py
+ros2 run mining_vehicle <your_entry_point_name>
 ```
-Then open RViz and add the `/mining_scene_markers` display and the
-`/fleet/cockpit_monitor` image topic.
+In RViz, add the `/mining_scene_markers` display and the `/fleet/cockpit_monitor` image topic.
+
+> Package files (`setup.py`, `package.xml`, launch file) are not yet included in this repo.
 
 ## Topics
 | Topic | Type |
